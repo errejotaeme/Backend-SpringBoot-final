@@ -25,9 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AccesoController {
     
-     @Autowired
+    @Autowired
     private IAccesoService acceServ;
-     
      
     @PostMapping(
            path="/acceso", 
@@ -37,10 +36,9 @@ public class AccesoController {
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
 	
         long id = 1;
-        Acceso  registro = acceServ.findAcceso(id);
-        
-        if (acces.getClave().equals(registro.getClave()) && 
-            acces.getUsuario().equals(registro.getUsuario())) {             
+                
+        if (acces.getClave().equals(acceServ.findAcceso(id).getClave()) && 
+            acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {             
             
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
