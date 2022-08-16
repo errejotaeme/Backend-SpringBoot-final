@@ -35,12 +35,6 @@ public class AccesoController {
     
      @Autowired
     private IAccesoService acceServ;
-    /*
-    @GetMapping("/acceso")
-    public List<Acceso> verAccesos(){
-    return acceServ.getAccesos();
-    }
-    */
      
      
     @PostMapping(
@@ -86,24 +80,5 @@ public class AccesoController {
 
 		return token;
 	}
-   /* 
-    @DeleteMapping("/acceso/{id}")
-    public String borrarAcceso(@PathVariable Long id){
-        acceServ.deleteAcceso(id);
-        return "El registro fue eliminado correctamente";    
-    }
-       
-    @PutMapping("/acceso/{id}")
-    public Acceso editarAcceso(@PathVariable Long id,
-                                 @RequestParam("usuario") String nuevoUsuario,
-                                 @RequestParam("clave") String nuevaClave) {
-        
-        Acceso acces = acceServ.findAcceso(id);
-        acces.setUsuario(nuevoUsuario);
-        acces.setClave(nuevaClave);
-        
-        
-        acceServ.saveAcceso(acces);
-        return acces;
-    }    */
+
 }
