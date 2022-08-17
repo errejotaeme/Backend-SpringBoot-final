@@ -37,6 +37,11 @@ public class AccesoController {
            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
+        
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Access-Control-Allow-Origin", "https://front-portfolio-angular.web.app");
+            headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+            headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept");
 	
         long id = 1;
                 
@@ -45,10 +50,10 @@ public class AccesoController {
             
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
-            return new ResponseEntity<>(tokenDeAcceso, HttpStatus.OK);
+            return new ResponseEntity<>(tokenDeAcceso, headers, HttpStatus.OK);
             
         } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(headers, HttpStatus.UNAUTHORIZED);
         }      
     }    
     
