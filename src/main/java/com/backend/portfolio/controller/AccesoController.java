@@ -31,7 +31,7 @@ public class AccesoController {
      
     @PostMapping(
            path="/acceso", 
-           consumes = MediaType.APPLICATION_JSON_VALUE, 
+           consumes = MediaType.TEXT_PLAIN_VALUE, 
            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
