@@ -38,9 +38,11 @@ public class AccesoController {
         long id = 1;
                 
         if (acces.getClave().equals(acceServ.findAcceso(id).getClave()) && 
-            acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {             
+            acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {
+            
             HttpHeaders headers = new HttpHeaders();
             headers.set("Access-Control-Allow-Origin","https://front-portfolio-angular.web.app");
+            headers.add("Access-Control-Allow-Headers","Origin, X-Requested-Width, Content-Type, Accept");
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
             return new ResponseEntity<>(tokenDeAcceso, headers, HttpStatus.OK);
