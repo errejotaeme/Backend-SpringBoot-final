@@ -20,29 +20,6 @@ public class PortfolioApplication {
 		SpringApplication.run(PortfolioApplication.class, args);
 	}
         
-        
-
-        @EnableWebSecurity
-        public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-                @Override
-                protected void configure(HttpSecurity http) throws Exception {
-                        http
-                                // by default uses a Bean by the name of corsConfigurationSource
-                                .cors().and()
-                                ...
-                }
-
-                @Bean
-                CorsConfigurationSource corsConfigurationSource() {
-                        CorsConfiguration configuration = new CorsConfiguration();
-                        configuration.setAllowedOrigins(Arrays.asList("https://front-portfolio-angular.web.app""));
-                        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
-                        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-                        source.registerCorsConfiguration("/**", configuration);
-                        return source;
-                }
-        }
 
         
         @EnableWebSecurity
