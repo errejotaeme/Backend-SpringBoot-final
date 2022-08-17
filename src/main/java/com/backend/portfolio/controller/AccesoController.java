@@ -40,7 +40,7 @@ public class AccesoController {
         
             HttpHeaders headers = new HttpHeaders();
             headers.add("Access-Control-Allow-Origin", "https://front-portfolio-angular.web.app");
-            headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+            headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept");
 	
         long id = 1;
