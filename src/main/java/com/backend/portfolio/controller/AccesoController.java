@@ -23,12 +23,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
-@CrossOrigin(origins = "*")
 public class AccesoController {
     
     @Autowired
     private IAccesoService acceServ;
-     
+    
+    @CrossOrigin(origins = "https://front-portfolio-angular.web.app/iniciar-sesion")
     @PostMapping(
            path="/acceso", 
            produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,7 +41,7 @@ public class AccesoController {
             acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {
             
             HttpHeaders headers = new HttpHeaders();
-            headers.set("Access-Control-Allow-Origin","*");
+            headers.set("Access-Control-Allow-Origin","https://front-portfolio-angular.web.app");
             headers.add("Access-Control-Allow-Headers","Origin, X-Requested-Width, Content-Type, Accept");
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
