@@ -15,6 +15,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import java.util.stream.Collectors;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -34,15 +35,16 @@ public class AccesoController {
            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
-	
+	HttpHeaders headers = new HttpHeaders();
         long id = 1;
                 
         if (acces.getClave().equals(acceServ.findAcceso(id).getClave()) && 
             acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {             
             
+            headers.set("Access-Control-Allow-Origin","https://front-portfolio-angular.web.app");
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
-            return new ResponseEntity<>(tokenDeAcceso, HttpStatus.OK);
+            return new ResponseEntity<>(tokenDeAcceso, headers, HttpStatus.OK);
             
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
