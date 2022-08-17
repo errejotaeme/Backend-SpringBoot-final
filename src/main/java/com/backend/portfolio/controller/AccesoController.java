@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
-@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
+@CrossOrigin(origins = "https://front-portfolio-angular.web.app/iniciar-sesion")
 public class AccesoController {
     
     @Autowired
