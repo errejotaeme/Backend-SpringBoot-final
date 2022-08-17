@@ -25,7 +25,7 @@ public class PortfolioApplication {
 	}
 
         
-     /*   @EnableWebSecurity
+        @EnableWebSecurity
 	@Configuration
 	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -37,6 +37,6 @@ public class PortfolioApplication {
 				.antMatchers(HttpMethod.POST, "/acceso").permitAll()
 				.anyRequest().authenticated();
 		}
-	}*/
+	}
 
 }
