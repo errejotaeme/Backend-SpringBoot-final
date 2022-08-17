@@ -23,14 +23,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
-@CrossOrigin(origins = "https://front-portfolio-angular.web.app/iniciar-sesion")
+@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
 public class AccesoController {
     
     @Autowired
     private IAccesoService acceServ;
      
     @PostMapping(
-           path="/acceso", 
+           path="/acceso",
+           consumes = MediaType.APPLICATION_JSON_VALUE,
            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
@@ -40,12 +41,9 @@ public class AccesoController {
         if (acces.getClave().equals(acceServ.findAcceso(id).getClave()) && 
             acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {
             
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Access-Control-Allow-Origin","https://front-portfolio-angular.web.app");
-            headers.add("Access-Control-Allow-Headers","Origin, X-Requested-Width, Content-Type, Accept");
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
-            return new ResponseEntity<>(tokenDeAcceso, headers, HttpStatus.OK);
+            return new ResponseEntity<>(tokenDeAcceso, HttpStatus.OK);
             
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
