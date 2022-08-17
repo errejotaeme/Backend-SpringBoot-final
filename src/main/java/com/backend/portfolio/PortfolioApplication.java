@@ -26,7 +26,10 @@ public class PortfolioApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("https://front-portfolio-angular.web.app");
+				registry.addMapping("/**")
+                                        .allowedOrigins("https://front-portfolio-angular.web.app")
+                                        .allowedMethods("*")
+                                        .allowedHeaders("*");
 			}
 		};
 	}
