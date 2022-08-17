@@ -35,12 +35,12 @@ public class AccesoController {
            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<RespuestaJSON> solicitarAcceso(@RequestBody Acceso acces){
-	HttpHeaders headers = new HttpHeaders();
+	
         long id = 1;
                 
         if (acces.getClave().equals(acceServ.findAcceso(id).getClave()) && 
             acces.getUsuario().equals(acceServ.findAcceso(id).getUsuario())) {             
-            
+            HttpHeaders headers = new HttpHeaders();
             headers.set("Access-Control-Allow-Origin","https://front-portfolio-angular.web.app");
             String token = getJWTToken(acces.getUsuario());
             RespuestaJSON tokenDeAcceso = new RespuestaJSON(token);
