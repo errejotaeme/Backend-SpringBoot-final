@@ -27,13 +27,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/acceso")
-@CrossOrigin(origins = "https://front-portfolio-angular.web.app", maxAge = 20)
+@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
 public class AccesoController {
     
     @Autowired
     private IAccesoService acceServ;
     
-   @RequestMapping(value="/acceso", method = RequestMethod.OPTIONS)
+  /* @RequestMapping(value="/acceso", method = RequestMethod.OPTIONS)
    ResponseEntity<?> collectionOptions(){
        
        HttpHeaders headers = new HttpHeaders();
@@ -46,7 +46,7 @@ public class AccesoController {
           .headers(headers)
           .allow(HttpMethod.GET, HttpMethod.POST, HttpMethod.OPTIONS)
           .build();
-   }
+   }*/
      
     @PostMapping(
            path="/acceso",
