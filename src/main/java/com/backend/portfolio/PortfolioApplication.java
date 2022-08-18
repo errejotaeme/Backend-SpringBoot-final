@@ -42,14 +42,13 @@ public class PortfolioApplication {
 		configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Acces-Control-Allows-Credentials"));
                 configuration.setAllowedOrigins(Arrays.asList("https://front-portfolio-angular.web.app"));
 		configuration.setAllowedMethods(Arrays.asList("OPTIONS","GET", "POST", "PUT", "DELETE"));
-                configuration.addAllowedOrigin("*");
                 configuration.setMaxAge(Duration.ZERO);
                 configuration.setAllowCredentials(Boolean.TRUE);
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
                 }
-                
+                //PROBAR ALLOWHEADERS CON * 
                 
 
 		@Override

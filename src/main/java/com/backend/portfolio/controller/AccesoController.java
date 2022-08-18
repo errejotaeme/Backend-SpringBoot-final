@@ -37,14 +37,14 @@ public class AccesoController {
    ResponseEntity<?> collectionOptions(){
        
        HttpHeaders headers = new HttpHeaders();
-       headers.add("Access-Control-Allow-Origin", "*");
-       headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-       headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept");
+       headers.add("Access-Control-Allow-Origin", "https://front-portfolio-angular.web.app");
+       headers.add("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PUT, DELETE");
+       headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       
        return ResponseEntity
           .ok()
           .headers(headers)
-          .allow(HttpMethod.GET, HttpMethod.POST, HttpMethod.OPTIONS)
+          .allow(HttpMethod.OPTIONS, HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
           .build();
    }
      
