@@ -34,22 +34,11 @@ public class PortfolioApplication {
         @EnableWebSecurity
 	@Configuration
 	class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-                            .cors(withDefaults())
-                            .csrf().disable()
-                            .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-			    .authorizeRequests()
-                            .antMatchers(HttpMethod.POST, "/acceso").permitAll()
-                            .anyRequest().authenticated();
-		}
-                
+            
                 @Bean
                 CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-                configuration.setAllowedHeaders(Arrays.asList("Origin" , "Accept", "X-Requested-Width", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization"));
+                configuration.setAllowedHeaders(Arrays.asList("Origin, Accept", "X-Requested-Width", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization"));
 		configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Acces-Control-Allows-Credentials"));
                 configuration.setAllowedOrigins(Arrays.asList("https://front-portfolio-angular.web.app"));
 		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
@@ -60,7 +49,17 @@ public class PortfolioApplication {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
                 }
-        
+
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http
+                            .cors(withDefaults())
+                            .csrf().disable()
+                            .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+			    .authorizeRequests()
+                            .antMatchers(HttpMethod.POST, "/acceso").permitAll()
+                            .anyRequest().authenticated();
+		}      
         
         }
 
