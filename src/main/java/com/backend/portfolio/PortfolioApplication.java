@@ -49,7 +49,7 @@ public class PortfolioApplication {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
                 }
-                //PROBAR ALLOWHEADERS CON * 
+         
                 
 
 		@Override

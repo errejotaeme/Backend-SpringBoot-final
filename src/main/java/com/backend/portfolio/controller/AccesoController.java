@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
-@RequestMapping("/acceso")
 @CrossOrigin(origins = "https://front-portfolio-angular.web.app")
 public class AccesoController {
     
