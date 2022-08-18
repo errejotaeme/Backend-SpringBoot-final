@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/acceso")
-@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
+@CrossOrigin(origins = "https://front-portfolio-angular.web.app", maxAge = 20)
 public class AccesoController {
     
     @Autowired
