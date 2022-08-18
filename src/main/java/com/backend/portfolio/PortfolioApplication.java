@@ -38,13 +38,13 @@ public class PortfolioApplication {
                 @Bean
                 CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration();
-                configuration.setAllowedHeaders(Arrays.asList("Origin", "Accept", "X-Requested-With", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization"));
 		configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Acces-Control-Allows-Credentials"));
                 configuration.setAllowedOrigins(Arrays.asList("https://front-portfolio-angular.web.app"));
 		configuration.setAllowedMethods(Arrays.asList("OPTIONS","GET", "POST", "PUT", "DELETE"));
                 configuration.setMaxAge(Duration.ZERO);
                 configuration.setAllowCredentials(Boolean.TRUE);
-                configuration.addAllowedOrigin("*");
+                configuration.addAllowedHeader("*");
+                configuration.addAllowedMethod("*");
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
