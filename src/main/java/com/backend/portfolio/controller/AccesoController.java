@@ -16,11 +16,13 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 import java.util.stream.Collectors;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
@@ -30,6 +32,21 @@ public class AccesoController {
     
     @Autowired
     private IAccesoService acceServ;
+    
+   @RequestMapping(value="/acceso", method = RequestMethod.OPTIONS)
+   ResponseEntity<?> collectionOptions(){
+       
+       HttpHeaders headers = new HttpHeaders();
+       headers.add("Access-Control-Allow-Origin", "*");
+       headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+       headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-Width, Content-Type, Accept");
+      
+       return ResponseEntity
+          .ok()
+          .headers(headers)
+          .allow(HttpMethod.GET, HttpMethod.POST, HttpMethod.OPTIONS)
+          .build();
+   }
      
     @PostMapping(
            path="/acceso",
