@@ -59,6 +59,7 @@ public class PortfolioApplication {
                             .csrf().disable()
                             .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			    .authorizeRequests()
+                            .antMatchers(HttpMethod.OPTIONS, "/acceso").permitAll()
                             .antMatchers(HttpMethod.POST, "/acceso").permitAll()
                             .anyRequest().authenticated();
 		}      
