@@ -41,7 +41,7 @@ public class PortfolioApplication {
                 configuration.setAllowedHeaders(Arrays.asList("Origin, Accept", "X-Requested-Width", "Content-Type", "Access-Control-Request-Method", "Access-Control-Request-Headers", "Authorization"));
 		configuration.setExposedHeaders(Arrays.asList("Access-Control-Allow-Origin", "Acces-Control-Allows-Credentials"));
                 configuration.setAllowedOrigins(Arrays.asList("https://front-portfolio-angular.web.app"));
-		configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+		configuration.setAllowedMethods(Arrays.asList("OPTIONS","GET", "POST", "PUT", "DELETE"));
                 configuration.addAllowedOrigin("*");
                 configuration.setMaxAge(Duration.ZERO);
                 configuration.setAllowCredentials(Boolean.TRUE);
@@ -49,6 +49,8 @@ public class PortfolioApplication {
 		source.registerCorsConfiguration("/**", configuration);
 		return source;
                 }
+                
+                
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
