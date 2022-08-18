@@ -27,26 +27,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/acceso")
-//@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
+@CrossOrigin(origins = "https://front-portfolio-angular.web.app")
 public class AccesoController {
     
     @Autowired
     private IAccesoService acceServ;
-    
-  @RequestMapping(value="/acceso", method = RequestMethod.OPTIONS)
-   ResponseEntity<?> collectionOptions(){
-       
-       HttpHeaders headers = new HttpHeaders();
-       headers.add("Access-Control-Allow-Origin", "https://front-portfolio-angular.web.app");
-       headers.add("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PUT, DELETE");
-       headers.add("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      
-       return ResponseEntity
-          .ok()
-          .headers(headers)
-          .allow(HttpMethod.OPTIONS, HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE)
-          .build();
-   }
+  
      
     @PostMapping(
            path="/acceso",
