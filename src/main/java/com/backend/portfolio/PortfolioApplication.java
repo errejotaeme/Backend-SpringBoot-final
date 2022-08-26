@@ -59,8 +59,16 @@ public class PortfolioApplication {
                             .csrf().disable()
                             .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 			    .authorizeRequests()
+                            .antMatchers(HttpMethod.OPTIONS, "/persona").permitAll()
+                            .antMatchers(HttpMethod.GET, "/persona").permitAll()
+                            .antMatchers(HttpMethod.OPTIONS, "/educacion").permitAll()
+                            .antMatchers(HttpMethod.GET, "/educacion").permitAll()
+                            .antMatchers(HttpMethod.OPTIONS, "/experiencias").permitAll()
+                            .antMatchers(HttpMethod.GET, "/experiencias").permitAll()
+                            .antMatchers(HttpMethod.OPTIONS, "/conocimientos").permitAll()
+                            .antMatchers(HttpMethod.GET, "/conocimientos").permitAll()
                             .antMatchers(HttpMethod.OPTIONS, "/acceso").permitAll()
-                            .antMatchers(HttpMethod.POST, "/acceso").permitAll()
+                            .antMatchers(HttpMethod.POST, "/acceso").permitAll()                                
                             .anyRequest().authenticated();
 		}      
         
